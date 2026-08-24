@@ -39,7 +39,17 @@ def create_vector_store() -> Chroma:
         persist_directory=str(CHROMA_DIR),
     )
 
+def clear_index() -> None:
+    """
+    Delete the existing Chroma collection.
+    """
 
+    vector_store = create_vector_store()
+
+    try:
+        vector_store.delete_collection()
+    except Exception:
+        pass
 def build_index(
     chunks: list[DocumentChunk],
 ) -> Chroma:
