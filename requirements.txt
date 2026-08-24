@@ -1,0 +1,12 @@
+langgraph
+langchain
+langchain-community
+langchain-ollama
+chromadb
+ollama
+python-dotenv
+pydantic
+pyyaml
+pytest
+tiktoken
+langchain-chroma

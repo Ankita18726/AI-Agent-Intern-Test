@@ -1,2 +1,38 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+# Virtual environments
+.venv/
+venv/
+
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Test / tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Chroma
+chroma_db/
+
+# Logs
+logs/
+*.log
+*.jsonl
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
