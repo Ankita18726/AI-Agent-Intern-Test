@@ -2,13 +2,47 @@ import json
 import re
 from pathlib import Path
 from typing import Any
-
+from pydantic import BaseModel
 from app.config import DATA_DIR
 
 
 ORDERS_FILE = DATA_DIR / "orders.json"
 
+FORBIDDEN_ORDER_FIELDS = {
+    "email",
+    "customer_email",
+    "address",
+    "shipping_address",
+    "billing_address",
+    "internal",
+    "internal_notes",
+    "internal_note",
+    "warehouse_note",
+    "risk_score",
+    "support_tags",
+}
 
+class OrderLookupResult(BaseModel):
+
+    found: bool
+
+    order_id: str | None = None
+
+    reason: str | None = None
+
+    status: str | None = None
+
+    carrier: str | None = None
+
+    tracking_number: str | None = None
+
+    estimated_delivery: str | None = None
+
+    shipped_at: str | None = None
+
+    delivered_at: str | None = None
+
+    message: str | None = None
 # --------------------------------------------------
 # Order ID helpers
 # --------------------------------------------------
@@ -16,7 +50,31 @@ ORDERS_FILE = DATA_DIR / "orders.json"
 ORDER_ID_PATTERN = re.compile(
     r"^ORD-\d{4}$"
 )
+ORDER_ID_SEARCH_PATTERN = re.compile(
+    r"\bORD-\d{4}\b",
+    re.IGNORECASE,
+)
 
+def extract_order_id(
+    text: str,
+) -> str | None:
+    """
+    Extract a valid-looking order ID from free text.
+    """
+
+    if not text:
+        return None
+
+    match = ORDER_ID_SEARCH_PATTERN.search(
+        text
+    )
+
+    if not match:
+        return None
+
+    return normalize_order_id(
+        match.group(0)
+    )
 
 def normalize_order_id(
     order_id: str | None,
@@ -373,3 +431,16 @@ def lookup_order(
     result["order_id"] = normalized
 
     return result
+
+def order_lookup_tool(
+    order_id: str,
+) -> dict[str, Any]:
+    """
+    Look up one Aster & Row order.
+
+    Only customer-safe order information is returned.
+    """
+
+    return lookup_order(
+        order_id
+    )

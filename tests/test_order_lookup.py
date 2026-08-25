@@ -3,6 +3,36 @@ from app.tools.order_lookup import (
     lookup_order,
     normalize_order_id,
 )
+from app.tools.order_lookup import (
+    extract_order_id,
+)
+
+
+def test_extract_order_id():
+
+    result = extract_order_id(
+        "Where is ORD-1007?"
+    )
+
+    assert result == "ORD-1007"
+
+
+def test_extract_lowercase_order_id():
+
+    result = extract_order_id(
+        "can you check ord-1007 please"
+    )
+
+    assert result == "ORD-1007"
+
+
+def test_no_order_id_in_text():
+
+    result = extract_order_id(
+        "Where is my order?"
+    )
+
+    assert result is None
 
 
 def test_normalize_lowercase_order_id():
@@ -172,7 +202,16 @@ def test_cancelled_order_does_not_return_eta():
             not in result
         )
 
+def test_known_email_never_exposed():
 
+    result = lookup_order(
+        "ORD-1001"
+    )
+
+    assert (
+        "maya.reed@example.test"
+        not in str(result)
+    )
 def test_returned_order_does_not_return_stale_delivery():
 
     # If your dataset has a known returned order,

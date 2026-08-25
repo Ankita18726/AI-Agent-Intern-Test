@@ -36,3 +36,6 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+evaluation/results/baseline.json
+evaluation/results/final.json

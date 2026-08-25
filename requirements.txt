@@ -1,12 +1,12 @@
 langgraph
 langchain
+langchain-core
 langchain-community
 langchain-ollama
+langchain-chroma
 chromadb
 ollama
 python-dotenv
 pydantic
 pyyaml
 pytest
-tiktoken
-langchain-chroma

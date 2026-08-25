@@ -1,0 +1,43 @@
+{
+  "label": "latest",
+  "generated_at": "2026-08-25T15:30:56.329673+05:30",
+  "summary": {
+    "passed": 0,
+    "total": 1,
+    "percentage": 0.0,
+    "by_category": {
+      "retrieval": {
+        "passed": 0,
+        "total": 1,
+        "percentage": 0.0
+      }
+    },
+    "by_suite": {
+      "visible": {
+        "passed": 0,
+        "total": 1,
+        "percentage": 0.0
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "standard-return-window",
+      "suite": "visible",
+      "category": "retrieval",
+      "passed": false,
+      "failures": [
+        "Runtime error: TypeError: dict.get() takes no keyword arguments"
+      ],
+      "duration_seconds": 2.94,
+      "final_answer": "",
+      "sources": [],
+      "handoff": false,
+      "handoff_reason": null,
+      "tool_called": false,
+      "requested_order_ids": [],
+      "turn_count": 0,
+      "error": "TypeError: dict.get() takes no keyword arguments"
+    }
+  ]
+}

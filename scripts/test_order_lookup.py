@@ -1,79 +1,32 @@
 from app.tools.order_lookup import (
+    extract_order_id,
     lookup_order,
 )
 
 
-def run_case(
-    label: str,
-    order_id,
-):
-
-    print("\n" + "=" * 70)
-
-    print(label)
-
-    print(
-        f"Input: {repr(order_id)}"
-    )
-
-    result = lookup_order(
-        order_id
-    )
-
-    print("Result:")
-
-    for key, value in result.items():
-        print(
-            f"  {key}: {value}"
-        )
-
-
 def main():
 
-    run_case(
-        "Normal order lookup",
-        "ORD-1007",
-    )
+    queries = [
+        "Where is ORD-1007?",
+        "Can you check ord-1007 please?",
+        "Where is ORD-9999?",
+        "Where is my order?",
+    ]
 
-    run_case(
-        "Lowercase order ID",
-        "ord-1007",
-    )
+    for query in queries:
 
-    run_case(
-        "Whitespace normalization",
-        "   ORD-1007   ",
-    )
+        print("\n" + "=" * 70)
+        print(f"QUERY: {query}")
+        print("=" * 70)
 
-    run_case(
-        "Missing order ID",
-        None,
-    )
+        order_id = extract_order_id(query)
 
-    run_case(
-        "Empty order ID",
-        "   ",
-    )
+        print(f"Extracted ID: {order_id}")
 
-    run_case(
-        "Malformed order ID",
-        "1007",
-    )
+        result = lookup_order(order_id)
 
-    run_case(
-        "Unknown order ID",
-        "ORD-9999",
-    )
-
-    run_case(
-        "Cancelled order",
-        "ORD-1004",
-    )
-
-    run_case(
-        "Missing ETA order",
-        "ORD-1011",
-    )
+        print("Result:")
+        print(result)
 
 
 if __name__ == "__main__":
