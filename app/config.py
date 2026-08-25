@@ -81,3 +81,31 @@ def create_runtime_directories() -> None:
         parents=True,
         exist_ok=True,
     )
+DEBUG = (
+    os.getenv(
+        "DEBUG",
+        "false",
+    ).strip().lower()
+    == "true"
+)
+
+
+ENABLE_TRACING = (
+    os.getenv(
+        "ENABLE_TRACING",
+        "true",
+    ).strip().lower()
+    == "true"
+)
+
+
+TRACE_FILE = os.getenv(
+    "TRACE_FILE",
+    "traces.jsonl",
+)
+
+
+TRACE_PATH = (
+    LOG_DIR
+    / TRACE_FILE
+)

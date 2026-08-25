@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Aster & Row AI customer support assistant"
+    >
+
+    <title>Aster & Row Support</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/static/styles.css"
+    >
+</head>
+
+<body>
+
+<div class="page-shell">
+
+    <!-- ==========================================
+         Sidebar
+    =========================================== -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="brand">
+                <div class="brand-mark">
+                    A
+                </div>
+
+                <div>
+                    <h1>Aster & Row</h1>
+                    <p>Customer care</p>
+                </div>
+            </div>
+
+
+            <div class="sidebar-divider"></div>
+
+
+            <div class="assistant-card">
+
+                <div class="assistant-icon">
+                    ✦
+                </div>
+
+                <div>
+                    <span class="eyebrow">
+                        AI ASSISTANT
+                    </span>
+
+                    <h3>
+                        Support, grounded in
+                        company policy.
+                    </h3>
+                </div>
+
+            </div>
+
+
+            <div class="feature-list">
+
+                <div class="feature">
+                    <span>✓</span>
+                    Policy-aware answers
+                </div>
+
+                <div class="feature">
+                    <span>✓</span>
+                    Secure order lookup
+                </div>
+
+                <div class="feature">
+                    <span>✓</span>
+                    Source citations
+                </div>
+
+                <div class="feature">
+                    <span>✓</span>
+                    Human handoff when needed
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="privacy-note">
+                <div class="privacy-icon">
+                    ◈
+                </div>
+
+                <div>
+                    <strong>
+                        Privacy first
+                    </strong>
+
+                    <p>
+                        Internal customer information
+                        is never exposed by the assistant.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ==========================================
+         Main application
+    =========================================== -->
+
+    <main class="main">
+
+        <!-- Header -->
+
+        <header class="topbar">
+
+            <div>
+
+                <span class="eyebrow">
+                    CUSTOMER SUPPORT
+                </span>
+
+                <h2>
+                    How can we help?
+                </h2>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <div class="status-pill">
+                    <span class="status-dot"></span>
+                    Online
+                </div>
+
+                <button
+                    id="newChatButton"
+                    class="secondary-button"
+                    type="button"
+                >
+                    New chat
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- Chat area -->
+
+        <section
+            id="chatArea"
+            class="chat-area"
+        >
+
+            <!-- Welcome -->
+
+            <div
+                id="welcomeScreen"
+                class="welcome"
+            >
+
+                <div class="welcome-icon">
+                    ✦
+                </div>
+
+                <h2>
+                    Welcome to Aster & Row
+                </h2>
+
+                <p>
+                    Ask about returns, shipping,
+                    warranties, products, or the
+                    status of your order.
+                </p>
+
+
+                <div class="suggestion-grid">
+
+                    <button
+                        class="suggestion"
+                        data-message="How long do I have to return an unused backpack?"
+                    >
+                        <span class="suggestion-icon">
+                            ↩
+                        </span>
+
+                        <div>
+                            <strong>
+                                Returns
+                            </strong>
+
+                            <small>
+                                What's the return window?
+                            </small>
+                        </div>
+                    </button>
+
+
+                    <button
+                        class="suggestion"
+                        data-message="Do you ship internationally?"
+                    >
+                        <span class="suggestion-icon">
+                            ◌
+                        </span>
+
+                        <div>
+                            <strong>
+                                Shipping
+                            </strong>
+
+                            <small>
+                                International delivery
+                            </small>
+                        </div>
+                    </button>
+
+
+                    <button
+                        class="suggestion"
+                        data-message="Where is ORD-1007?"
+                    >
+                        <span class="suggestion-icon">
+                            ◇
+                        </span>
+
+                        <div>
+                            <strong>
+                                Track an order
+                            </strong>
+
+                            <small>
+                                Check order status
+                            </small>
+                        </div>
+                    </button>
+
+
+                    <button
+                        class="suggestion"
+                        data-message="What warranty do you offer?"
+                    >
+                        <span class="suggestion-icon">
+                            ✧
+                        </span>
+
+                        <div>
+                            <strong>
+                                Warranty
+                            </strong>
+
+                            <small>
+                                Coverage information
+                            </small>
+                        </div>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Actual messages -->
+
+            <div
+                id="messages"
+                class="messages"
+            ></div>
+
+        </section>
+
+
+        <!-- Composer -->
+
+        <footer class="composer-wrapper">
+
+            <form
+                id="chatForm"
+                class="composer"
+            >
+
+                <textarea
+                    id="messageInput"
+                    placeholder="Ask Aster & Row a question..."
+                    rows="1"
+                    maxlength="4000"
+                    autocomplete="off"
+                ></textarea>
+
+
+                <button
+                    id="sendButton"
+                    class="send-button"
+                    type="submit"
+                    aria-label="Send message"
+                >
+                    <span>↑</span>
+                </button>
+
+            </form>
+
+            <p class="composer-note">
+                Responses are grounded in Aster & Row
+                documentation and customer-safe order data.
+            </p>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script src="/static/app.js"></script>
+
+</body>
+</html>
